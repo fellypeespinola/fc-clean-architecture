@@ -17,7 +17,7 @@ export default class CreateProductUseCase {
     input: InputCreateProductDto
   ): Promise<OutputCreateProductDto> {
     const product = ProductFactory.create(
-      input.type,
+      'a',
       input.name,
       input.price
     );

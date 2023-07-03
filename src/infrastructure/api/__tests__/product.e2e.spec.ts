@@ -14,7 +14,6 @@ describe("E2E test for product", () => {
     const response = await request(app)
       .post("/product")
       .send({
-        type: "a",
         name: "Product A",
         price: 100,
       });
@@ -35,7 +34,6 @@ describe("E2E test for product", () => {
     const response = await request(app)
       .post("/product")
       .send({
-        type: "a",
         name: "Product A",
         price: 100,
       });
@@ -43,7 +41,6 @@ describe("E2E test for product", () => {
     const response2 = await request(app)
       .post("/product")
       .send({
-        type: "b",
         name: "Product B",
         price: 150,
       });
@@ -58,7 +55,7 @@ describe("E2E test for product", () => {
     expect(product.price).toBe(100);
     const product2 = listResponse.body.products[1];
     expect(product2.name).toBe("Product B");
-    expect(product2.price).toBe(300);
+    expect(product2.price).toBe(150);
 
     const listResponseXML = await request(app)
     .get("/product")
@@ -73,7 +70,7 @@ describe("E2E test for product", () => {
     expect(listResponseXML.text).toContain(`<price>100</price>`);
     expect(listResponseXML.text).toContain(`</product>`);
     expect(listResponseXML.text).toContain(`<name>Product B</name>`);
-    expect(listResponseXML.text).toContain(`<price>300</price>`);
+    expect(listResponseXML.text).toContain(`<price>150</price>`);
     expect(listResponseXML.text).toContain(`</products>`);
     
 
